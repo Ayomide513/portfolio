@@ -330,6 +330,103 @@ export default function AIMLPortfolio() {
           </div>
         </section>
 
+        {/* Certifications Section */}
+        <section className="container mx-auto px-6 py-20">
+          <div className="text-center mb-16">
+            <h2 className="text-5xl font-black mb-4">
+              <span className="bg-gradient-to-r from-yellow-400 via-orange-400 to-rose-400 bg-clip-text text-transparent">
+                Certifications
+              </span>
+            </h2>
+            <p className="text-gray-400 text-lg">Continuous learning in AI, ML, and LLM technologies</p>
+          </div>
+
+          <div className="max-w-5xl mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[
+              { title: "Generative AI & LLMs", subtitle: "Architecture and Data Preparation", org: "IBM", icon: "🤖", color: "from-blue-500 to-cyan-500" },
+              { title: "Transformer Models & BERT", subtitle: "Advanced NLP Architecture", org: "IBM", icon: "🔄", color: "from-purple-500 to-pink-500" },
+              { title: "Large Language Models", subtitle: "LLM Fundamentals", org: "Cursa", icon: "🧠", color: "from-cyan-500 to-blue-500" },
+              { title: "Introduction to AI", subtitle: "Artificial Intelligence Foundations", org: "IBM", icon: "✨", color: "from-green-500 to-emerald-500" },
+              { title: "Data Science Virtual Experience", subtitle: "Real-world Data Projects", org: "Forage", icon: "📊", color: "from-orange-500 to-rose-500" },
+              { title: "Data Science", subtitle: "In Progress", org: "App Click Technology", icon: "⏳", color: "from-indigo-500 to-purple-500", inProgress: true }
+            ].map((cert, idx) => (
+              <div 
+                key={idx}
+                className="group relative bg-gradient-to-br from-white/[0.08] to-white/[0.02] backdrop-blur-2xl rounded-2xl p-6 border border-white/10 hover:border-white/30 transition-all duration-300 hover:scale-105"
+                style={{ animationDelay: `${idx * 100}ms` }}
+              >
+                <div className={`absolute inset-0 bg-gradient-to-br ${cert.color} opacity-0 group-hover:opacity-10 rounded-2xl transition-all duration-500`}></div>
+                
+                <div className="relative">
+                  <div className="flex items-start justify-between mb-4">
+                    <div className={`text-4xl p-3 bg-gradient-to-br ${cert.color} bg-opacity-20 rounded-xl backdrop-blur-xl`}>
+                      {cert.icon}
+                    </div>
+                    {cert.inProgress && (
+                      <span className="px-3 py-1 bg-yellow-500/20 border border-yellow-500/50 rounded-full text-yellow-400 text-xs font-semibold">
+                        In Progress
+                      </span>
+                    )}
+                  </div>
+                  
+                  <h3 className="text-lg font-bold text-white mb-2 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-cyan-400 group-hover:to-purple-400 transition-all">
+                    {cert.title}
+                  </h3>
+                  <p className="text-sm text-gray-400 mb-3">{cert.subtitle}</p>
+                  <div className="flex items-center gap-2">
+                    <div className={`w-2 h-2 rounded-full bg-gradient-to-r ${cert.color}`}></div>
+                    <span className="text-xs text-gray-500 font-medium">{cert.org}</span>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Blog Section */}
+        <section className="container mx-auto px-6 py-20">
+          <div className="text-center mb-16">
+            <h2 className="text-5xl font-black mb-4">
+              <span className="bg-gradient-to-r from-orange-400 via-rose-400 to-pink-400 bg-clip-text text-transparent">
+                Blog & Articles
+              </span>
+            </h2>
+            <p className="text-gray-400 text-lg">Sharing insights on AI, ML, and data science</p>
+          </div>
+
+          <div className="max-w-3xl mx-auto">
+            <a 
+              href="https://medium.com/@ayorindeolamilekan2003" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="group block relative bg-gradient-to-br from-white/10 to-white/[0.02] backdrop-blur-2xl rounded-3xl p-8 border border-white/20 hover:border-orange-400/50 transition-all duration-500 hover:scale-[1.02]"
+            >
+              <div className="absolute inset-0 bg-gradient-to-br from-orange-500/0 to-rose-500/0 group-hover:from-orange-500/10 group-hover:to-rose-500/10 rounded-3xl transition-all duration-500"></div>
+              
+              <div className="relative flex items-start gap-6">
+                <div className="p-4 bg-gradient-to-br from-orange-500/20 to-rose-500/20 rounded-2xl backdrop-blur-xl flex-shrink-0">
+                  <svg className="w-12 h-12 text-white" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/>
+                  </svg>
+                </div>
+                
+                <div className="flex-1">
+                  <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-orange-400 transition-colors">
+                    Read My Articles on Medium
+                  </h3>
+                  <p className="text-gray-300 mb-4">
+                    Data science insights, machine learning tutorials, and AI research breakdowns.
+                  </p>
+                  <div className="flex items-center gap-2 text-orange-400 font-semibold">
+                    <span>Visit Medium Profile</span>
+                    <ExternalLink className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+        </section>
+
         {/* Stats & About Section */}
         <section className="container mx-auto px-6 py-20">
           <div className="max-w-5xl mx-auto">
