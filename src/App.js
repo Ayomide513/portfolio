@@ -84,7 +84,7 @@ export default function AIMLPortfolio() {
       title: "College Placement Prediction API",
       category: "Machine Learning & API Development",
       description: "The application leverages a trained model to assess student profiles and forecast placement chances.",
-      tech: ["FastAPI, scikit-learn, Pydantic, Uvicorn"],
+      tech: ["FastAPI", "scikit-learn", "Pydantic", "Uvicorn"],
       metrics: "Real-time predictions with confidence scores",
       github: "https://github.com/Ayomide513/college_placement",
       icon: MessageSquare,
