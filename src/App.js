@@ -35,8 +35,19 @@ export default function AIMLPortfolio() {
       icon: Database,
       gradient: "from-blue-500 via-cyan-500 to-teal-500"
     },
-    {
+     {
       id: 2,
+      title: "Healthcare Customer Service Chatbot",
+      category: "AI & Healthcare",
+      description: "An intelligent conversational AI chatbot that streamlines customer service operations at healthcare centers by automating order processing, appointment scheduling, and patient inquiries with 24/7 availability.",
+      tech: ["Streamlit", "Gemini API", "Python", "NLP"],
+      metrics: "24/7 automated customer support with natural language processing and real-time order management",
+      github: "https://github.com/Ayomide513/Chatbot",
+      icon: MessageSquare,
+      gradient: "from-purple-500 via-pink-500 to-rose-500"
+    },
+    {
+      id: 3,
       title: "Email Classifier API",
       category: "NLP & API Development",
       description: "Production-ready RESTful API for email classification leveraging transformer models for spam/ham detection with real-time inference.",
@@ -47,7 +58,7 @@ export default function AIMLPortfolio() {
       gradient: "from-purple-500 via-pink-500 to-rose-500"
     },
     {
-      id: 3,
+      id: 4,
       title: "Heart Disease Prediction",
       category: "Healthcare ML",
       description: "Clinical decision support system using ML to predict heart disease risk, optimized for high recall to minimize false negatives in critical diagnosis.",
@@ -58,7 +69,7 @@ export default function AIMLPortfolio() {
       gradient: "from-red-500 via-orange-500 to-amber-500"
     },
     {
-      id: 4,
+      id: 5,
       title: "Smartphone Price Prediction",
       category: "Supervised Learning",
       description: "Ensemble learning pipeline for price category prediction using technical specifications to optimize product positioning and pricing strategies.",
@@ -69,7 +80,7 @@ export default function AIMLPortfolio() {
       gradient: "from-green-500 via-emerald-500 to-teal-500"
     },
     {
-      id: 5,
+      id: 6,
       title: "Hotel Booking Analysis",
       category: "Data Analytics & Visualization",
       description: "Comprehensive data analytics pipeline for hotel operations, providing actionable insights for revenue optimization and demand forecasting.",
