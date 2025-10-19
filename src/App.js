@@ -79,8 +79,19 @@ export default function AIMLPortfolio() {
       icon: Sparkles,
       gradient: "from-green-500 via-emerald-500 to-teal-500"
     },
-    {
+     {
       id: 6,
+      title: "College Placement Prediction API",
+      category: "Machine Learning & API Development",
+      description: "The application leverages a trained model to assess student profiles and forecast placement chances.",
+      tech: ["FastAPI, scikit-learn, Pydantic, Uvicorn"],
+      metrics: "Real-time predictions with confidence scores",
+      github: "https://github.com/Ayomide513/college_placement",
+      icon: MessageSquare,
+      gradient: "from-purple-500 via-pink-500 to-rose-500"
+    },
+    {
+      id: 7,
       title: "Hotel Booking Analysis",
       category: "Data Analytics & Visualization",
       description: "Comprehensive data analytics pipeline for hotel operations, providing actionable insights for revenue optimization and demand forecasting.",
