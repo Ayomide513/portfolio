@@ -366,6 +366,7 @@ export default function AIMLPortfolio() {
           <div className="max-w-5xl mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
               { title: "Generative AI & LLMs", subtitle: "Architecture and Data Preparation", org: "IBM", icon: "🤖", color: "from-blue-500 to-cyan-500" },
+              { title: "Generative AI & LLMs", subtitle: "Python for Data Science, AI & Development", org: "IBM", icon: "🤖", color: "from-blue-500 to-cyan-500" },
               { title: "Transformer Models & BERT", subtitle: "Advanced NLP Architecture", org: "IBM", icon: "🔄", color: "from-purple-500 to-pink-500" },
               { title: "Large Language Models", subtitle: "LLM Fundamentals", org: "Cursa", icon: "🧠", color: "from-cyan-500 to-blue-500" },
               { title: "Introduction to AI", subtitle: "Artificial Intelligence Foundations", org: "IBM", icon: "✨", color: "from-green-500 to-emerald-500" },
