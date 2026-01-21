@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Brain, Github, Linkedin, Mail, ExternalLink, Code, Database, Cpu, Zap, MessageSquare, Sparkles, Network, Bot, Award, TrendingUp, Users, BookOpen, ChevronDown, Menu, X } from 'lucide-react';
 
 export default function AIMLPortfolio() {
