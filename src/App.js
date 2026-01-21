@@ -1,24 +1,25 @@
 import React, { useState, useEffect } from 'react';
-import { Brain, Github, Linkedin, Mail, ExternalLink, Code, Database, Cpu, Zap, MessageSquare, Sparkles, Network, Bot } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { Brain, Github, Linkedin, Mail, ExternalLink, Code, Database, Cpu, Zap, MessageSquare, Sparkles, Network, Bot, Award, TrendingUp, Users, BookOpen, FileText } from 'lucide-react';
 
 export default function AIMLPortfolio() {
   const [activeProject, setActiveProject] = useState(null);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [typedText, setTypedText] = useState('');
-  const fullText = "Building the Future with Data Science, Machine Learning, and AI";
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const handleMouseMove = (e) => setMousePosition({ x: e.clientX, y: e.clientY });
+    const handleMouseMove = (e) => {
+      setMousePosition({ x: e.clientX, y: e.clientY });
+    };
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
     window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, []);
-
-  useEffect(() => {
-    if (typedText.length < fullText.length) {
-      setTimeout(() => setTypedText(fullText.slice(0, typedText.length + 1)), 50);
-    }
-  }, [typedText]);
 
   const projects = [
     {
@@ -30,7 +31,7 @@ export default function AIMLPortfolio() {
       metrics: "7 student personas identified using Silhouette Score & Elbow Method",
       github: "https://github.com/Ayomide513/Edulytics-case-study",
       icon: Database,
-      gradient: "from-blue-500 via-cyan-500 to-teal-500"
+      color: "cyan"
     },
     {
       id: 2,
@@ -38,10 +39,10 @@ export default function AIMLPortfolio() {
       category: "AI & Healthcare",
       description: "An intelligent conversational AI chatbot that streamlines customer service operations at healthcare centers by automating order processing, appointment scheduling, and patient inquiries with 24/7 availability.",
       tech: ["Streamlit", "Gemini API", "Python", "NLP"],
-      metrics: "24/7 automated customer support with NLP and real-time order management",
+      metrics: "24/7 automated customer support with natural language processing and real-time order management",
       github: "https://github.com/Ayomide513/Chatbot",
       icon: MessageSquare,
-      gradient: "from-purple-500 via-pink-500 to-rose-500"
+      color: "purple"
     },
     {
       id: 3,
@@ -51,8 +52,8 @@ export default function AIMLPortfolio() {
       tech: ["FastAPI", "Transformers", "BERT", "Pydantic", "Uvicorn"],
       metrics: "Production-ready API with confidence scores and error handling",
       github: "https://github.com/Ayomide513/email_classifier_api",
-      icon: MessageSquare,
-      gradient: "from-purple-500 via-pink-500 to-rose-500"
+      icon: Code,
+      color: "emerald"
     },
     {
       id: 4,
@@ -63,141 +64,568 @@ export default function AIMLPortfolio() {
       metrics: "82% accuracy, 90% recall, 86.1% cross-validation average",
       github: "https://github.com/Ayomide513/HeartDisease",
       icon: Cpu,
-      gradient: "from-red-500 via-orange-500 to-amber-500"
+      color: "rose"
+    },
+    {
+      id: 5,
+      title: "Smartphone Price Prediction",
+      category: "Supervised Learning",
+      description: "Ensemble learning pipeline for price category prediction using technical specifications to optimize product positioning and pricing strategies.",
+      tech: ["Random Forest", "Logistic Regression", "SVM", "Scikit-learn"],
+      metrics: "Random Forest achieved highest F1-score with interpretable feature importance",
+      github: "https://github.com/Ayomide513/-Smartphone-Price-Prediction-Supervised-Learning-",
+      icon: Sparkles,
+      color: "teal"
+    },
+    {
+      id: 6,
+      title: "College Placement Prediction API",
+      category: "Machine Learning & API Development",
+      description: "The application leverages a trained model to assess student profiles and forecast placement chances.",
+      tech: ["FastAPI", "scikit-learn", "Pydantic", "Uvicorn"],
+      metrics: "Real-time predictions with confidence scores",
+      github: "https://github.com/Ayomide513/college_placement",
+      icon: Users,
+      color: "violet"
+    },
+    {
+      id: 7,
+      title: "Hotel Booking Analysis",
+      category: "Data Analytics & Visualization",
+      description: "Comprehensive data analytics pipeline for hotel operations, providing actionable insights for revenue optimization and demand forecasting.",
+      tech: ["Pandas", "Plotly", "Seaborn", "Matplotlib", "Python"],
+      metrics: "Insights on ADR optimization, seasonal trends, and cancellation factors",
+      github: "https://github.com/Ayomide513/SGH-DATABASE",
+      icon: TrendingUp,
+      color: "orange"
     }
   ];
 
-  const llmSkills = [
-    { name: "Data Science & Analytics", items: ["Pandas", "NumPy", "Matplotlib", "Seaborn", "Data Wrangling", "EDA"], icon: Brain },
-    { name: "Machine Learning", items: ["Scikit-learn", "Random Forest", "SVM", "XGBoost", "Deep Learning", "PyTorch", "TensorFlow"], icon: Sparkles },
-    { name: "NLP & LLMs", items: ["BERT", "GPT", "Transformers", "LangChain", "LlamaIndex", "Text Classification", "NER", "Hugging Face"], icon: Bot },
-    { name: "Data Engineering & Deployment", items: ["Python", "FastAPI", "REST APIs", "Vector Databases", "Cloud Deployment"], icon: Code }
+  const expertise = [
+    { 
+      title: "Prompt Engineering", 
+      desc: "Crafting precision prompts for LLMs and AI systems", 
+      icon: Sparkles,
+      gradient: "from-yellow-500 to-orange-500"
+    },
+    { 
+      title: "Fine-tuning Models", 
+      desc: "Domain-specific adaptation of LLMs and ML models", 
+      icon: Cpu,
+      gradient: "from-blue-500 to-cyan-500"
+    },
+    { 
+      title: "RAG Systems & NLP", 
+      desc: "Building retrieval-augmented pipelines", 
+      icon: Network,
+      gradient: "from-purple-500 to-pink-500"
+    },
+    { 
+      title: "ML Deployment", 
+      desc: "Production-ready scalable ML systems", 
+      icon: Zap,
+      gradient: "from-emerald-500 to-teal-500"
+    }
   ];
 
-  const expertise = [
-    { title: "Prompt Engineering", desc: "Designing effective prompts for LLMs and AI-driven applications", icon: Sparkles },
-    { title: "Fine-tuning Models", desc: "Adapting LLMs and ML models for domain-specific tasks with high accuracy", icon: Cpu },
-    { title: "RAG Systems & NLP", desc: "Building retrieval-augmented generation pipelines and advanced NLP solutions", icon: Network },
-    { title: "Machine Learning Deployment", desc: "Deploying scalable ML and LLM systems into production environments", icon: Zap },
-    { title: "Data Science & Analytics", desc: "Performing data preprocessing, EDA, and deriving actionable insights from complex datasets", icon: Brain }
+  const skills = [
+    { 
+      category: "Data Science", 
+      items: ["Pandas", "NumPy", "Matplotlib", "Seaborn", "Plotly"],
+      icon: Brain,
+      color: "cyan"
+    },
+    { 
+      category: "Machine Learning", 
+      items: ["Scikit-learn", "XGBoost", "PyTorch", "TensorFlow"],
+      icon: Sparkles,
+      color: "purple"
+    },
+    { 
+      category: "NLP & LLMs", 
+      items: ["BERT", "GPT", "LangChain", "Transformers", "Hugging Face"],
+      icon: Bot,
+      color: "pink"
+    },
+    { 
+      category: "Engineering", 
+      items: ["Python", "FastAPI", "REST APIs", "Cloud Deploy"],
+      icon: Code,
+      color: "emerald"
+    }
   ];
+
+  const getColorClasses = (color) => {
+    const colors = {
+      cyan: { bg: 'bg-cyan-500', text: 'text-cyan-400', border: 'border-cyan-500', glow: 'shadow-cyan-500/50' },
+      purple: { bg: 'bg-purple-500', text: 'text-purple-400', border: 'border-purple-500', glow: 'shadow-purple-500/50' },
+      emerald: { bg: 'bg-emerald-500', text: 'text-emerald-400', border: 'border-emerald-500', glow: 'shadow-emerald-500/50' },
+      rose: { bg: 'bg-rose-500', text: 'text-rose-400', border: 'border-rose-500', glow: 'shadow-rose-500/50' },
+      teal: { bg: 'bg-teal-500', text: 'text-teal-400', border: 'border-teal-500', glow: 'shadow-teal-500/50' },
+      violet: { bg: 'bg-violet-500', text: 'text-violet-400', border: 'border-violet-500', glow: 'shadow-violet-500/50' },
+      orange: { bg: 'bg-orange-500', text: 'text-orange-400', border: 'border-orange-500', glow: 'shadow-orange-500/50' },
+      pink: { bg: 'bg-pink-500', text: 'text-pink-400', border: 'border-pink-500', glow: 'shadow-pink-500/50' }
+    };
+    return colors[color] || colors.cyan;
+  };
 
   return (
-    <div className="min-h-screen bg-black text-white relative overflow-hidden">
-
-      {/* Animated Background */}
+    <div className="min-h-screen bg-black text-white relative overflow-x-hidden">
+      {/* Stunning Background Image with Overlays */}
       <div className="fixed inset-0 z-0">
-        <div className="absolute inset-0 bg-gradient-to-br from-purple-900/30 via-black to-cyan-900/30"></div>
+        {/* Neural Network / AI Background Pattern */}
         <div 
-          className="absolute inset-0"
-          style={{ background: `radial-gradient(circle at ${mousePosition.x}px ${mousePosition.y}px, rgba(139,92,246,0.2), transparent 40%)`, transition: 'background 0.3s ease'}}
-        ></div>
-        {[...Array(15)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute w-3 h-3 rounded-full blur-xl opacity-50"
-            animate={{ x: [0, 10, -10, 0], y: [0, -10, 10, 0], scale: [1,1.5,1] }}
-            transition={{ duration: 10 + Math.random() * 10, repeat: Infinity, ease: "easeInOut", delay: i * 0.2 }}
-            style={{ top: `${Math.random()*100}%`, left: `${Math.random()*100}%`, backgroundColor: ['#0ff','#f0f','#ff0','#0f0'][i%4] }}
-          />
-        ))}
+          className="absolute inset-0 opacity-30"
+          style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%239C92AC' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+            backgroundSize: '60px 60px'
+          }}
+        />
+        
+        {/* Gradient Overlays */}
+        <div className="absolute inset-0 bg-gradient-to-br from-purple-900/40 via-black/60 to-cyan-900/40"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+        
+        {/* Animated Mesh Gradient */}
+        <div className="absolute inset-0 opacity-40">
+          <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-500 rounded-full mix-blend-screen filter blur-3xl animate-blob"></div>
+          <div className="absolute top-0 right-1/4 w-96 h-96 bg-cyan-500 rounded-full mix-blend-screen filter blur-3xl animate-blob animation-delay-2000"></div>
+          <div className="absolute bottom-0 left-1/3 w-96 h-96 bg-indigo-500 rounded-full mix-blend-screen filter blur-3xl animate-blob animation-delay-4000"></div>
+        </div>
+        
+        {/* Interactive Mouse Glow */}
+        <div 
+          className="absolute inset-0 opacity-20 transition-opacity duration-300 pointer-events-none"
+          style={{
+            background: `radial-gradient(600px circle at ${mousePosition.x}px ${mousePosition.y}px, rgba(59,130,246,0.4), transparent 40%)`
+          }}
+        />
+        
+        {/* Floating Particles */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          {[...Array(30)].map((_, i) => (
+            <div
+              key={i}
+              className="absolute rounded-full"
+              style={{
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+                width: `${Math.random() * 4 + 1}px`,
+                height: `${Math.random() * 4 + 1}px`,
+                background: ['#3b82f6', '#06b6d4', '#6366f1', '#0ea5e9'][Math.floor(Math.random() * 4)],
+                animation: `float ${15 + Math.random() * 15}s ease-in-out infinite`,
+                animationDelay: `${Math.random() * 5}s`,
+                opacity: 0.3
+              }}
+            />
+          ))}
+        </div>
       </div>
 
       <div className="relative z-10">
+        {/* Floating Nav */}
+        <nav className={`fixed top-6 left-1/2 -translate-x-1/2 z-50 transition-all duration-500 ${scrolled ? 'scale-95' : 'scale-100'}`}>
+          <div className="bg-black/40 backdrop-blur-2xl border border-white/10 rounded-full px-8 py-4 shadow-2xl shadow-blue-500/20">
+            <div className="flex items-center gap-8">
+              <a href="#home" className="text-sm font-semibold text-slate-300 hover:text-blue-400 transition-colors cursor-pointer">Home</a>
+              <a href="#expertise" className="text-sm font-semibold text-slate-300 hover:text-blue-400 transition-colors cursor-pointer">Expertise</a>
+              <a href="#projects" className="text-sm font-semibold text-slate-300 hover:text-blue-400 transition-colors cursor-pointer">Projects</a>
+              <a href="#content" className="text-sm font-semibold text-slate-300 hover:text-blue-400 transition-colors cursor-pointer">Content</a>
+              <a href="mailto:saheedolamilekanayorinde@gmail.com" className="bg-gradient-to-r from-blue-600 to-cyan-600 text-white px-6 py-2 rounded-full text-sm font-bold hover:shadow-lg hover:shadow-blue-500/50 transition-all hover:scale-105">
+                Contact
+              </a>
+            </div>
+          </div>
+        </nav>
+
         {/* Hero Section */}
-        <header className="container mx-auto px-6 py-24 text-center">
-          <motion.div initial={{ opacity: 0, y: -30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1 }}>
-            <div className="flex justify-center mb-8">
-              <Brain className="w-20 h-20 text-transparent stroke-cyan-400 animate-pulse" strokeWidth={1.5} />
+        <section id="home" className="min-h-screen flex items-center justify-center px-6 pt-32 pb-20">
+          <div className="max-w-6xl mx-auto text-center">
+            {/* Animated Icon */}
+            <div className="mb-8 relative inline-block">
+              <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-cyan-600 rounded-full blur-3xl opacity-60 animate-pulse"></div>
+              <div className="relative bg-gradient-to-br from-blue-500 via-cyan-500 to-teal-500 p-8 rounded-3xl shadow-2xl shadow-blue-500/50">
+                <Brain className="w-20 h-20 text-white" strokeWidth={1.5} />
+              </div>
             </div>
 
-            <h1 className="text-6xl md:text-8xl font-black mb-6 relative">
-              <span className="absolute inset-0 bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-transparent blur-lg opacity-50">Ayorinde Saheed</span>
-              <span className="relative bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-transparent animate-gradient">Ayorinde Saheed</span>
+            {/* Name & Title */}
+            <h1 className="text-7xl md:text-8xl lg:text-9xl font-black mb-6 tracking-tight">
+              <span className="bg-gradient-to-r from-white via-blue-100 to-cyan-100 bg-clip-text text-transparent drop-shadow-2xl">
+                Ayorinde Saheed
+              </span>
             </h1>
 
-            <p className="text-2xl md:text-3xl text-gray-300 font-light mb-4">
-              <span className="text-cyan-400 font-bold">LLM Engineer</span> & <span className="text-purple-400 font-bold">AI Specialist</span>
-            </p>
-            <p className="text-lg text-gray-400 font-mono mb-12">{typedText}<span className="animate-pulse">|</span></p>
+            <div className="space-y-4 mb-12">
+              <p className="text-2xl md:text-3xl font-light text-slate-200">
+                <span className="font-bold bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">LLM Engineer</span>
+                <span className="mx-3 text-slate-600">•</span>
+                <span className="font-bold bg-gradient-to-r from-blue-400 to-indigo-400 bg-clip-text text-transparent">AI Specialist</span>
+              </p>
+              <p className="text-lg text-slate-300 max-w-3xl mx-auto leading-relaxed">
+                Building intelligent systems with Data Science, Machine Learning & AI. Specialized in LLMs, NLP, and production ML deployment.
+              </p>
+            </div>
 
-            <motion.div className="flex justify-center gap-4 flex-wrap" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.2 }}>
-              <a href="mailto:saheedolamilekanayorinde@gmail.com" className="group relative px-8 py-4 rounded-xl bg-gradient-to-r from-cyan-500 via-purple-500 to-pink-500 hover:scale-105 transition-transform flex items-center gap-2 font-semibold">
-                <Mail className="w-5 h-5" /> Get In Touch
-              </a>
-              <a href="https://github.com/Ayomide513" target="_blank" rel="noopener noreferrer" className="group px-8 py-4 border-2 border-cyan-400/50 rounded-xl hover:border-cyan-400 hover:bg-cyan-400/10 transition-all flex items-center gap-2 font-semibold">
-                <Github className="w-5 h-5" /> GitHub
-              </a>
-              <a href="https://www.linkedin.com/in/saheedayorinde" target="_blank" rel="noopener noreferrer" className="group px-8 py-4 border-2 border-purple-400/50 rounded-xl hover:border-purple-400 hover:bg-purple-400/10 transition-all flex items-center gap-2 font-semibold">
-                <Linkedin className="w-5 h-5" /> LinkedIn
-              </a>
-            </motion.div>
-          </motion.div>
-        </header>
+            {/* Status Badge */}
+            <div className="inline-flex items-center gap-3 px-6 py-3 bg-green-500/10 border border-green-500/30 rounded-full backdrop-blur-xl mb-12 shadow-lg shadow-green-500/20">
+              <div className="relative">
+                <div className="w-2.5 h-2.5 bg-green-400 rounded-full"></div>
+                <div className="absolute inset-0 w-2.5 h-2.5 bg-green-400 rounded-full animate-ping"></div>
+              </div>
+              <span className="text-green-400 text-sm font-bold tracking-wider">OPEN TO OPPORTUNITIES</span>
+            </div>
 
-        {/* Skills & Expertise */}
-        <section className="container mx-auto px-6 py-20">
-          <div className="text-center mb-16">
-            <h2 className="text-5xl font-black mb-4">
-              <span className="bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">Expertise & Skills</span>
-            </h2>
-            <p className="text-gray-400 text-lg">Mastery in Data Science, ML, NLP, and AI deployment</p>
+            {/* Social Links */}
+            <div className="flex flex-wrap justify-center gap-4 mb-8">
+              <a 
+                href="mailto:saheedolamilekanayorinde@gmail.com" 
+                className="group relative px-8 py-4 bg-gradient-to-r from-blue-600 to-cyan-600 rounded-2xl font-bold shadow-2xl shadow-blue-500/40 hover:shadow-blue-500/60 hover:scale-105 transition-all duration-300"
+              >
+                <div className="flex items-center gap-2">
+                  <Mail className="w-5 h-5" />
+                  Get In Touch
+                </div>
+              </a>
+              
+              <a 
+                href="https://github.com/Ayomide513" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="group px-8 py-4 bg-black/50 border-2 border-white/10 rounded-2xl font-bold hover:border-purple-500/50 hover:bg-black/70 transition-all duration-300 backdrop-blur-xl hover:scale-105"
+              >
+                <div className="flex items-center gap-2">
+                  <Github className="w-5 h-5" />
+                  GitHub
+                </div>
+              </a>
+              
+              <a 
+                href="https://www.linkedin.com/in/saheedayorinde" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="group px-8 py-4 bg-black/50 border-2 border-white/10 rounded-2xl font-bold hover:border-blue-500/50 hover:bg-black/70 transition-all duration-300 backdrop-blur-xl hover:scale-105"
+              >
+                <div className="flex items-center gap-2">
+                  <Linkedin className="w-5 h-5" />
+                  LinkedIn
+                </div>
+              </a>
+            </div>
+
+            {/* Medium & Credly Links */}
+            <div className="flex flex-wrap justify-center gap-4">
+              <a 
+                href="https://medium.com/@ayorindeolamilekan2003" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="group px-6 py-3 bg-black/50 border border-white/10 rounded-xl font-semibold hover:border-green-500/50 hover:bg-black/70 transition-all duration-300 backdrop-blur-xl hover:scale-105"
+              >
+                <div className="flex items-center gap-2">
+                  <BookOpen className="w-5 h-5 text-green-400" />
+                  <span className="text-sm">Medium Articles</span>
+                </div>
+              </a>
+              
+              <a 
+                href="https://www.credly.com/users/ayorinde-saheed-olamilekan" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="group px-6 py-3 bg-black/50 border border-white/10 rounded-xl font-semibold hover:border-orange-500/50 hover:bg-black/70 transition-all duration-300 backdrop-blur-xl hover:scale-105"
+              >
+                <div className="flex items-center gap-2">
+                  <Award className="w-5 h-5 text-orange-400" />
+                  <span className="text-sm">Credly Badges</span>
+                </div>
+              </a>
+            </div>
           </div>
+        </section>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-20">
-            {expertise.map((item, idx) => {
-              const Icon = item.icon;
-              return (
-                <motion.div key={item.title} whileHover={{ scale: 1.05 }} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.1 }} className="group relative bg-gradient-to-br from-white/10 to-white/[0.02] backdrop-blur-2xl rounded-2xl p-8 border border-white/20 hover:border-cyan-400/50 transition-all duration-500">
-                  <div className="relative">
-                    <div className="mb-4 inline-block p-3 bg-gradient-to-br from-cyan-500/20 to-purple-500/20 rounded-xl">
-                      <Icon className="w-8 h-8 text-cyan-400" />
-                    </div>
-                    <h3 className="text-xl font-bold mb-2 text-white">{item.title}</h3>
-                    <p className="text-gray-400 text-sm">{item.desc}</p>
-                  </div>
-                </motion.div>
-              );
-            })}
-          </div>
+        {/* Expertise Section */}
+        <section id="expertise" className="py-32 px-6">
+          <div className="max-w-7xl mx-auto">
+            <div className="text-center mb-20">
+              <h2 className="text-5xl md:text-6xl font-black mb-6 bg-gradient-to-r from-blue-400 via-cyan-400 to-teal-400 bg-clip-text text-transparent">
+                Core Expertise
+              </h2>
+              <p className="text-xl text-slate-300">Advanced capabilities in AI & ML engineering</p>
+            </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {llmSkills.map((skill, idx) => {
-              const Icon = skill.icon;
-              return (
-                <motion.div key={skill.name} whileHover={{ scale: 1.05 }} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.1 }} className="group relative bg-gradient-to-br from-white/[0.08] to-white/[0.02] backdrop-blur-2xl rounded-2xl p-6 border border-white/10 hover:border-white/30 transition-all duration-300">
-                  <div className="flex items-center gap-3 mb-4">
-                    <Icon className="w-6 h-6 text-cyan-400" />
-                    <h3 className="text-lg font-bold text-white">{skill.name}</h3>
-                  </div>
-                  <div className="space-y-2">
-                    {skill.items.map(item => (
-                      <div key={item} className="flex items-center gap-2 group/item">
-                        <div className="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-cyan-400 to-purple-400"></div>
-                        <span className="text-gray-300 text-sm group-hover/item:text-cyan-400 transition-colors">{item}</span>
+            {/* Expertise Cards */}
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-20">
+              {expertise.map((item, idx) => {
+                const Icon = item.icon;
+                return (
+                  <div
+                    key={item.title}
+                    className="group relative bg-black/40 backdrop-blur-2xl rounded-3xl p-8 border border-white/10 hover:border-blue-500/50 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/30"
+                  >
+                    <div className={`absolute inset-0 bg-gradient-to-br ${item.gradient} opacity-0 group-hover:opacity-10 rounded-3xl transition-opacity duration-500`}></div>
+                    
+                    <div className="relative">
+                      <div className={`inline-flex p-4 bg-gradient-to-br ${item.gradient} rounded-2xl mb-6 shadow-xl`}>
+                        <Icon className="w-8 h-8 text-white" />
                       </div>
-                    ))}
+                      <h3 className="text-xl font-bold mb-3 text-white">{item.title}</h3>
+                      <p className="text-slate-400 text-sm leading-relaxed">{item.desc}</p>
+                    </div>
                   </div>
-                </motion.div>
-              );
-            })}
+                );
+              })}
+            </div>
+
+            {/* Skills Grid */}
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {skills.map((skill) => {
+                const Icon = skill.icon;
+                const colors = getColorClasses(skill.color);
+                return (
+                  <div
+                    key={skill.category}
+                    className="bg-black/30 backdrop-blur-2xl rounded-2xl p-6 border border-white/10 hover:border-white/20 transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/10"
+                  >
+                    <div className="flex items-center gap-3 mb-5">
+                      <Icon className={`w-6 h-6 ${colors.text}`} />
+                      <h3 className="text-lg font-bold text-white">{skill.category}</h3>
+                    </div>
+                    <div className="space-y-2">
+                      {skill.items.map((item) => (
+                        <div key={item} className="flex items-center gap-2 group/item">
+                          <div className={`w-1.5 h-1.5 rounded-full ${colors.bg}`}></div>
+                          <span className="text-slate-400 text-sm group-hover/item:text-white transition-colors">{item}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+
+        {/* Projects Section */}
+        <section id="projects" className="py-32 px-6">
+          <div className="max-w-7xl mx-auto">
+            <div className="text-center mb-20">
+              <h2 className="text-5xl md:text-6xl font-black mb-6 bg-gradient-to-r from-cyan-400 via-blue-400 to-indigo-400 bg-clip-text text-transparent">
+                Featured Projects
+              </h2>
+              <p className="text-xl text-slate-300">Production ML solutions with real-world impact</p>
+            </div>
+
+            <div className="grid lg:grid-cols-2 gap-8">
+              {projects.map((project) => {
+                const Icon = project.icon;
+                const colors = getColorClasses(project.color);
+                const isActive = activeProject === project.id;
+                
+                return (
+                  <div
+                    key={project.id}
+                    onClick={() => setActiveProject(isActive ? null : project.id)}
+                    className="group relative bg-black/40 backdrop-blur-2xl rounded-3xl p-8 border border-white/10 hover:border-white/20 transition-all duration-500 cursor-pointer hover:shadow-2xl hover:shadow-blue-500/20 hover:scale-[1.02]"
+                  >
+                    <div className="flex items-start justify-between mb-6">
+                      <div className="flex items-center gap-4">
+                        <div className={`p-3 ${colors.bg} rounded-2xl shadow-xl ${colors.glow}`}>
+                          <Icon className="w-6 h-6 text-white" />
+                        </div>
+                        <div>
+                          <h3 className="text-2xl font-bold text-white mb-1">{project.title}</h3>
+                          <span className={`text-xs font-bold ${colors.text} uppercase tracking-wider`}>
+                            {project.category}
+                          </span>
+                        </div>
+                      </div>
+                      <a
+                        href={project.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={(e) => e.stopPropagation()}
+                        className="p-2 hover:bg-white/10 rounded-xl transition-all group/link"
+                      >
+                        <ExternalLink className={`w-5 h-5 ${colors.text} group-hover/link:scale-110 transition-transform`} />
+                      </a>
+                    </div>
+
+                    <p className="text-slate-300 mb-6 leading-relaxed">{project.description}</p>
+
+                    <div className="flex flex-wrap gap-2 mb-6">
+                      {project.tech.map((tech) => (
+                        <span
+                          key={tech}
+                          className="px-3 py-1.5 bg-white/5 border border-white/10 rounded-lg text-xs font-medium text-slate-300 hover:bg-white/10 transition-colors"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+
+                    {isActive && (
+                      <div className="pt-6 border-t border-white/10 animate-fadeIn">
+                        <div className={`flex items-start gap-3 p-4 bg-gradient-to-r ${colors.bg}/10 border ${colors.border}/30 rounded-2xl`}>
+                          <Zap className="w-5 h-5 text-yellow-400 flex-shrink-0 mt-0.5" />
+                          <div>
+                            <p className="text-yellow-400 font-bold text-sm mb-1">Impact & Results</p>
+                            <p className="text-slate-300 text-sm">{project.metrics}</p>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+
+        {/* Content & Learning Section */}
+        <section id="content" className="py-32 px-6">
+          <div className="max-w-7xl mx-auto">
+            <div className="text-center mb-20">
+              <h2 className="text-5xl md:text-6xl font-black mb-6 bg-gradient-to-r from-teal-400 via-emerald-400 to-green-400 bg-clip-text text-transparent">
+                Content & Certifications
+              </h2>
+              <p className="text-xl text-slate-300">Sharing knowledge and continuous learning</p>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+              {/* Medium */}
+              <a
+                href="https://medium.com/@ayorindeolamilekan2003"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group relative bg-black/40 backdrop-blur-2xl rounded-3xl p-10 border border-white/10 hover:border-green-500/50 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-green-500/30"
+              >
+                <div className="absolute inset-0 bg-gradient-to-br from-green-500/0 to-emerald-500/0 group-hover:from-green-500/10 group-hover:to-emerald-500/10 rounded-3xl transition-all duration-500"></div>
+                
+                <div className="relative">
+                  <div className="inline-flex p-5 bg-gradient-to-br from-green-500 to-emerald-500 rounded-2xl mb-6 shadow-xl">
+                    <BookOpen className="w-10 h-10 text-white" />
+                  </div>
+                  
+                  <h3 className="text-3xl font-bold text-white mb-4 group-hover:text-green-400 transition-colors">
+                    Medium Articles
+                  </h3>
+                  <p className="text-slate-300 mb-6 leading-relaxed">
+                    Deep dives into AI, machine learning, and data science. Sharing insights, tutorials, and research breakdowns.
+                  </p>
+                  
+                  <div className="flex items-center gap-2 text-green-400 font-semibold">
+                    <span>Read Articles</span>
+                    <ExternalLink className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                  </div>
+                </div>
+              </a>
+
+              {/* Credly */}
+              <a
+                href="https://www.credly.com/users/ayorinde-saheed-olamilekan"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group relative bg-black/40 backdrop-blur-2xl rounded-3xl p-10 border border-white/10 hover:border-orange-500/50 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-orange-500/30"
+              >
+                <div className="absolute inset-0 bg-gradient-to-br from-orange-500/0 to-rose-500/0 group-hover:from-orange-500/10 group-hover:to-rose-500/10 rounded-3xl transition-all duration-500"></div>
+                
+                <div className="relative">
+                  <div className="inline-flex p-5 bg-gradient-to-br from-orange-500 to-rose-500 rounded-2xl mb-6 shadow-xl">
+                    <Award className="w-10 h-10 text-white" />
+                  </div>
+                  
+                  <h3 className="text-3xl font-bold text-white mb-4 group-hover:text-orange-400 transition-colors">
+                    Credly Badges
+                  </h3>
+                  <p className="text-slate-300 mb-6 leading-relaxed">
+                    Professional certifications in AI, ML, LLMs, and data science from leading tech companies and platforms.
+                  </p>
+                  
+                  <div className="flex items-center gap-2 text-orange-400 font-semibold">
+                    <span>View Certifications</span>
+                    <ExternalLink className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </section>
+
+        {/* Stats Section */}
+        <section className="py-32 px-6">
+          <div className="max-w-5xl mx-auto">
+            <div className="relative bg-black/40 backdrop-blur-2xl rounded-3xl p-12 border border-white/10 overflow-hidden shadow-2xl shadow-purple-500/20">
+              <div className="absolute inset-0 bg-gradient-to-r from-purple-500/5 via-pink-500/5 to-cyan-500/5"></div>
+              
+              <div className="relative">
+                <h2 className="text-4xl font-black text-center mb-16 bg-gradient-to-r from-blue-400 via-cyan-400 to-teal-400 bg-clip-text text-transparent">
+                  Impact Metrics
+                </h2>
+                
+                <div className="grid grid-cols-3 gap-8">
+                  <div className="text-center group">
+                    <div className="text-6xl font-black bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent mb-3 group-hover:scale-110 transition-transform">
+                      7+
+                    </div>
+                    <div className="text-slate-400 font-medium">ML Projects</div>
+                  </div>
+                  <div className="text-center group">
+                    <div className="text-6xl font-black bg-gradient-to-r from-blue-400 to-indigo-400 bg-clip-text text-transparent mb-3 group-hover:scale-110 transition-transform">
+                      90%
+                    </div>
+                    <div className="text-slate-400 font-medium">Model Recall</div>
+                  </div>
+                  <div className="text-center group">
+                    <div className="text-6xl font-black bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent mb-3 group-hover:scale-110 transition-transform">
+                      15K+
+                    </div>
+                    <div className="text-slate-400 font-medium">Data Points</div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
 
         {/* Footer */}
-        <footer className="container mx-auto px-6 py-12 border-t border-white/10 text-center text-gray-500 font-mono text-sm">
-          © 2025 Ayorinde Saheed Olamilekan • Engineered with React, Tailwind CSS & Framer Motion
+        <footer className="py-12 px-6 border-t border-white/10">
+          <div className="max-w-7xl mx-auto text-center">
+            <p className="text-slate-500 text-sm font-mono">
+              © 2025 Ayorinde Saheed • Built with React & Tailwind CSS
+            </p>
+          </div>
         </footer>
       </div>
 
-      <style jsx>{`
-        @keyframes gradient {
-          0%,100%{background-position:0% 50%}
-          50%{background-position:100% 50%}
+      <style>{`
+        @keyframes float {
+          0%, 100% { transform: translate(0, 0); }
+          33% { transform: translate(10px, -10px); }
+          66% { transform: translate(-10px, 10px); }
         }
-        .animate-gradient {
-          background-size: 200% 200%;
-          animation: gradient 3s ease infinite;
+        @keyframes fadeIn {
+          from { opacity: 0; transform: translateY(10px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes blob {
+          0%, 100% { transform: translate(0, 0) scale(1); }
+          25% { transform: translate(20px, -50px) scale(1.1); }
+          50% { transform: translate(-20px, 20px) scale(0.9); }
+          75% { transform: translate(50px, 50px) scale(1.05); }
+        }
+        .animate-float {
+          animation: float 20s ease-in-out infinite;
+        }
+        .animate-fadeIn {
+          animation: fadeIn 0.3s ease-out;
+        }
+        .animate-blob {
+          animation: blob 20s ease-in-out infinite;
+        }
+        .animation-delay-2000 {
+          animation-delay: 2s;
+        }
+        .animation-delay-4000 {
+          animation-delay: 4s;
         }
       `}</style>
     </div>
