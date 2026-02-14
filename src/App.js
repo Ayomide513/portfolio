@@ -143,7 +143,7 @@ export default function AIMLPortfolio() {
       metrics: "F1 Score: 0.65, 73% accuracy, 64% detection rate on test set",
       impact: "Providing 24/7 mental health screening with personalized recommendations",
       github: "https://github.com/Ayomide513/mental-health-chatbot",
-      live: "https://mental-health-chatbot-fsbi7nvtksnq5hr5xcmjrp.streamlit.app",
+      live: "https://mental-health-chatbot--xxxxx.streamlit.app/",
       icon: Bot,
       color: "violet"
     }
