@@ -23,7 +23,6 @@ export default function AIMLPortfolio() {
     };
   }, []);
 
-  // Intersection Observer for scroll animations
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -134,6 +133,19 @@ export default function AIMLPortfolio() {
       github: "https://github.com/Ayomide513/SGH-DATABASE",
       icon: TrendingUp,
       color: "orange"
+    },
+    {
+      id: 8,
+      title: "Mental Health Assistant",
+      category: "AI & Healthcare",
+      description: "AI-powered conversational chatbot for student mental health screening. Uses XGBoost ML model trained on 100K students to predict depression risk through natural conversation and provides personalized wellness recommendations.",
+      tech: ["XGBoost", "Streamlit", "Optuna", "Scikit-learn", "Python"],
+      metrics: "F1 Score: 0.65, 73% accuracy, 64% detection rate on test set",
+      impact: "Providing 24/7 mental health screening with personalized recommendations",
+      github: "https://github.com/Ayomide513/mental-health-chatbot",
+      live: "https://mental-health-chatbot-fsbi7nvtksnq5hr5xcmjrp.streamlit.app",
+      icon: Bot,
+      color: "violet"
     }
   ];
 
@@ -207,7 +219,6 @@ export default function AIMLPortfolio() {
 
   return (
     <div className="min-h-screen bg-black text-white relative overflow-x-hidden">
-      {/* Enhanced Background */}
       <div className="fixed inset-0 z-0">
         <div 
           className="absolute inset-0 opacity-30"
@@ -254,7 +265,6 @@ export default function AIMLPortfolio() {
       </div>
 
       <div className="relative z-10">
-        {/* Desktop Navigation */}
         <nav className={`hidden md:block fixed top-6 left-1/2 -translate-x-1/2 z-50 transition-all duration-500 ${scrolled ? 'scale-95' : 'scale-100'}`}>
           <div className="bg-black/40 backdrop-blur-2xl border border-white/10 rounded-full px-8 py-4 shadow-2xl shadow-blue-500/20">
             <div className="flex items-center gap-8">
@@ -269,7 +279,6 @@ export default function AIMLPortfolio() {
           </div>
         </nav>
 
-        {/* Mobile Navigation */}
         <div className="md:hidden fixed top-0 left-0 right-0 z-50 bg-black/90 backdrop-blur-2xl border-b border-white/10">
           <div className="flex items-center justify-between px-6 py-4">
             <Brain className="w-8 h-8 text-cyan-400" />
@@ -290,7 +299,6 @@ export default function AIMLPortfolio() {
           )}
         </div>
 
-        {/* Hero Section */}
         <section id="home" className="min-h-screen flex items-center justify-center px-6 pt-32 pb-20">
           <div className="max-w-6xl mx-auto text-center">
             <div className="mb-8 relative inline-block animate-fadeIn">
@@ -396,7 +404,6 @@ export default function AIMLPortfolio() {
           </div>
         </section>
 
-        {/* Expertise Section */}
         <section id="expertise" className="py-32 px-6">
           <div className="max-w-7xl mx-auto">
             <div className={`text-center mb-20 transition-all duration-1000 ${visibleSections.expertise ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
@@ -458,7 +465,6 @@ export default function AIMLPortfolio() {
           </div>
         </section>
 
-        {/* Projects Section */}
         <section id="projects" className="py-32 px-6">
           <div className="max-w-7xl mx-auto">
             <div className={`text-center mb-20 transition-all duration-1000 ${visibleSections.projects ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
@@ -493,15 +499,29 @@ export default function AIMLPortfolio() {
                           </span>
                         </div>
                       </div>
-                      <a
-                        href={project.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        onClick={(e) => e.stopPropagation()}
-                        className="p-2 hover:bg-white/10 rounded-xl transition-all group/link"
-                      >
-                        <ExternalLink className={`w-5 h-5 ${colors.text} group-hover/link:scale-110 transition-transform`} />
-                      </a>
+                      <div className="flex items-center gap-2">
+                        {project.live && (
+                          <a
+                            href={project.live}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            onClick={(e) => e.stopPropagation()}
+                            className="px-3 py-1.5 bg-green-500/20 border border-green-500/30 rounded-lg text-xs font-bold text-green-400 hover:bg-green-500/30 transition-all flex items-center gap-1.5"
+                          >
+                            <span>LIVE</span>
+                            <ExternalLink className="w-3.5 h-3.5" />
+                          </a>
+                        )}
+                        <a
+                          href={project.github}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          onClick={(e) => e.stopPropagation()}
+                          className="p-2 hover:bg-white/10 rounded-xl transition-all group/link"
+                        >
+                          <Github className={`w-5 h-5 ${colors.text} group-hover/link:scale-110 transition-transform`} />
+                        </a>
+                      </div>
                     </div>
 
                     <p className="text-slate-300 mb-6 leading-relaxed">{project.description}</p>
@@ -542,7 +562,6 @@ export default function AIMLPortfolio() {
           </div>
         </section>
 
-        {/* Content & Certifications */}
         <section id="content" className="py-32 px-6">
           <div className="max-w-7xl mx-auto">
             <div className={`text-center mb-20 transition-all duration-1000 ${visibleSections.content ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
@@ -611,7 +630,6 @@ export default function AIMLPortfolio() {
           </div>
         </section>
 
-        {/* Stats Section */}
         <section className="py-32 px-6">
           <div className="max-w-5xl mx-auto">
             <div className="relative bg-black/40 backdrop-blur-2xl rounded-3xl p-12 border border-white/10 overflow-hidden shadow-2xl shadow-blue-500/20">
@@ -625,7 +643,7 @@ export default function AIMLPortfolio() {
                 <div className="grid grid-cols-3 gap-8">
                   <div className="text-center group">
                     <div className="text-5xl md:text-6xl font-black bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent mb-3 group-hover:scale-110 transition-transform">
-                      7+
+                      8+
                     </div>
                     <div className="text-slate-400 font-medium text-sm md:text-base">ML Projects</div>
                   </div>
@@ -647,7 +665,6 @@ export default function AIMLPortfolio() {
           </div>
         </section>
 
-        {/* Footer */}
         <footer className="py-12 px-6 border-t border-white/10">
           <div className="max-w-7xl mx-auto">
             <div className="flex flex-col md:flex-row items-center justify-between gap-6">
