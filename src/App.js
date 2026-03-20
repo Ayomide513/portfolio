@@ -234,18 +234,18 @@ export default function AIMLPortfolio() {
 
         <div className="md:hidden fixed top-0 left-0 right-0 z-50 bg-black/90 backdrop-blur-2xl border-b border-white/10">
           <div className="flex items-center justify-between px-6 py-4">
-            <Brain className="w-8 h-8 text-cyan-400" />
+            <Brain className="w-8 h-8 text-emerald-400" />
             <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} className="text-white focus:outline-none">
               {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
           </div>
           {mobileMenuOpen && (
             <div className="px-6 pb-6 space-y-4 animate-fadeIn">
-              <button onClick={() => scrollToSection('home')} className="block w-full text-left text-slate-300 hover:text-blue-400 py-2 focus:outline-none">Home</button>
-              <button onClick={() => scrollToSection('about')} className="block w-full text-left text-slate-300 hover:text-blue-400 py-2 focus:outline-none">About</button>
-              <button onClick={() => scrollToSection('expertise')} className="block w-full text-left text-slate-300 hover:text-blue-400 py-2 focus:outline-none">Expertise</button>
-              <button onClick={() => scrollToSection('projects')} className="block w-full text-left text-slate-300 hover:text-blue-400 py-2 focus:outline-none">Projects</button>
-              <button onClick={() => scrollToSection('content')} className="block w-full text-left text-slate-300 hover:text-blue-400 py-2 focus:outline-none">Content</button>
+              <button onClick={() => scrollToSection('home')} className="block w-full text-left text-slate-300 hover:text-emerald-400 py-2 focus:outline-none">Home</button>
+              <button onClick={() => scrollToSection('about')} className="block w-full text-left text-slate-300 hover:text-emerald-400 py-2 focus:outline-none">About</button>
+              <button onClick={() => scrollToSection('expertise')} className="block w-full text-left text-slate-300 hover:text-emerald-400 py-2 focus:outline-none">Expertise</button>
+              <button onClick={() => scrollToSection('projects')} className="block w-full text-left text-slate-300 hover:text-emerald-400 py-2 focus:outline-none">Projects</button>
+              <button onClick={() => scrollToSection('content')} className="block w-full text-left text-slate-300 hover:text-emerald-400 py-2 focus:outline-none">Content</button>
               <button onClick={() => scrollToSection('contact')} className="block w-full text-center bg-gradient-to-r from-emerald-600 to-teal-600 text-white px-6 py-3 rounded-xl font-bold focus:outline-none focus:ring-2 focus:ring-emerald-400/50">
                 Contact
               </button>
@@ -254,112 +254,141 @@ export default function AIMLPortfolio() {
         </div>
 
         <section id="home" className="min-h-screen flex items-center justify-center px-6 pt-32 pb-20">
-          <div className="max-w-6xl mx-auto text-center">
-            {/* Profile Picture with Glow Effect */}
-            <div className="mb-8 relative inline-block animate-fadeIn">
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-cyan-600 rounded-full blur-3xl opacity-60 animate-pulse"></div>
-              <div className="relative w-40 h-40 mx-auto rounded-full overflow-hidden border-4 border-cyan-400/30 shadow-2xl">
-                <img 
-                  src="/profile-photo.jpeg"
-                  alt="Ayorinde Saheed Olamilekan" 
-                  className="w-full h-full object-cover"
-                />
+          <div className="max-w-7xl mx-auto w-full">
+            <div className="grid lg:grid-cols-2 gap-12 items-center">
+              {/* Left Side - Text Content */}
+              <div className="space-y-8 animate-slideUp">
+                <div className="space-y-4">
+                  <p className="text-emerald-400 font-bold text-lg tracking-wider">HELLO THERE! 👋</p>
+                  
+                  <h1 className="text-6xl md:text-7xl lg:text-8xl font-black tracking-tight">
+                    <span className="bg-gradient-to-r from-emerald-400 via-teal-400 to-cyan-400 bg-clip-text text-transparent">
+                      Ayorinde
+                    </span>
+                    <br />
+                    <span className="bg-gradient-to-r from-emerald-400 via-teal-400 to-cyan-400 bg-clip-text text-transparent">
+                      Saheed
+                    </span>
+                  </h1>
+
+                  <div className="space-y-3">
+                    <h2 className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent">
+                      Machine Learning & AI Engineer
+                    </h2>
+                    
+                    <p className="text-lg text-slate-300 leading-relaxed max-w-xl">
+                      Building intelligent systems with Data Science, Machine Learning & AI. Specialized in LLMs, NLP, and production ML deployment.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="inline-flex items-center gap-3 px-5 py-2.5 bg-green-500/10 border border-green-500/30 rounded-full backdrop-blur-xl shadow-lg shadow-green-500/20">
+                  <div className="relative">
+                    <div className="w-2 h-2 bg-green-400 rounded-full"></div>
+                    <div className="absolute inset-0 w-2 h-2 bg-green-400 rounded-full animate-ping"></div>
+                  </div>
+                  <span className="text-green-400 text-sm font-bold tracking-wider">AVAILABLE FOR OPPORTUNITIES</span>
+                </div>
+
+                <div className="flex flex-wrap gap-4 pt-4">
+                  <a 
+                    href="mailto:Ayorindeolamilekan2003@gmail.com" 
+                    className="group relative px-8 py-4 bg-gradient-to-r from-emerald-600 to-teal-600 rounded-2xl font-bold shadow-2xl shadow-emerald-500/40 hover:shadow-emerald-500/60 hover:scale-105 transition-all duration-300"
+                  >
+                    <div className="flex items-center justify-center gap-2">
+                      <Mail className="w-5 h-5" />
+                      Get In Touch
+                    </div>
+                  </a>
+                  
+                  <a 
+                    href="https://github.com/Ayomide513" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="group px-8 py-4 bg-black/50 border-2 border-emerald-500/30 rounded-2xl font-bold hover:border-emerald-500/50 hover:bg-emerald-500/10 transition-all duration-300 backdrop-blur-xl hover:scale-105"
+                  >
+                    <div className="flex items-center justify-center gap-2">
+                      <Github className="w-5 h-5" />
+                      GitHub
+                    </div>
+                  </a>
+                  
+                  <a 
+                    href="https://www.linkedin.com/in/saheedayorinde" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="group px-8 py-4 bg-black/50 border-2 border-emerald-500/30 rounded-2xl font-bold hover:border-emerald-500/50 hover:bg-emerald-500/10 transition-all duration-300 backdrop-blur-xl hover:scale-105"
+                  >
+                    <div className="flex items-center justify-center gap-2">
+                      <Linkedin className="w-5 h-5" />
+                      LinkedIn
+                    </div>
+                  </a>
+                </div>
+
+                <div className="flex flex-wrap gap-3 pt-2">
+                  <a 
+                    href="https://medium.com/@ayorindeolamilekan2003" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="group px-5 py-2.5 bg-black/50 border border-emerald-500/20 rounded-xl font-semibold text-sm hover:border-emerald-500/50 hover:bg-emerald-500/10 transition-all duration-300 backdrop-blur-xl hover:scale-105"
+                  >
+                    <div className="flex items-center gap-2">
+                      <BookOpen className="w-4 h-4 text-emerald-400" />
+                      <span>Medium</span>
+                    </div>
+                  </a>
+                  
+                  <a 
+                    href="https://www.credly.com/users/ayorinde-saheed-olamilekan" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="group px-5 py-2.5 bg-black/50 border border-emerald-500/20 rounded-xl font-semibold text-sm hover:border-emerald-500/50 hover:bg-emerald-500/10 transition-all duration-300 backdrop-blur-xl hover:scale-105"
+                  >
+                    <div className="flex items-center gap-2">
+                      <Award className="w-4 h-4 text-emerald-400" />
+                      <span>Credly</span>
+                    </div>
+                  </a>
+                </div>
+              </div>
+
+              {/* Right Side - Profile Photo */}
+              <div className="flex items-center justify-center lg:justify-end animate-slideUp animation-delay-400">
+                <div className="relative group">
+                  {/* Glowing ring effect */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-emerald-600 to-teal-600 rounded-full blur-3xl opacity-40 group-hover:opacity-60 transition-opacity animate-pulse"></div>
+                  <div className="absolute -inset-4 bg-gradient-to-r from-emerald-400 via-teal-400 to-cyan-400 rounded-full opacity-20 animate-spin-slow" style={{animation: 'spin 8s linear infinite'}}></div>
+                  
+                  {/* Photo container */}
+                  <div className="relative w-72 h-72 md:w-96 md:h-96 lg:w-[450px] lg:h-[450px] rounded-full overflow-hidden border-4 border-emerald-400/30 shadow-2xl shadow-emerald-500/50 group-hover:scale-105 transition-transform duration-500">
+                    <img 
+                      src="/profile-photo.jpeg"
+                      alt="Ayorinde Saheed Olamilekan" 
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+
+                  {/* Floating AI badge */}
+                  <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 px-6 py-3 bg-gradient-to-r from-emerald-600 to-teal-600 rounded-full shadow-2xl shadow-emerald-500/50 backdrop-blur-xl border border-emerald-400/30">
+                    <div className="flex items-center gap-2">
+                      <Brain className="w-5 h-5 text-white" />
+                      <span className="text-white font-bold text-sm">Machine Learning & AI Engineer</span>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
 
-            <h1 className="text-6xl md:text-8xl lg:text-9xl font-black mb-6 tracking-tight animate-slideUp">
-              <span className="bg-gradient-to-r from-white via-blue-100 to-cyan-100 bg-clip-text text-transparent drop-shadow-2xl">
-                Ayorinde Saheed
-              </span>
-            </h1>
-
-            <div className="space-y-4 mb-12 animate-slideUp animation-delay-200">
-              <p className="text-2xl md:text-3xl font-light text-slate-200">
-                <span className="font-bold bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">LLM Engineer</span>
-                <span className="mx-3 text-slate-600">•</span>
-                <span className="font-bold bg-gradient-to-r from-blue-400 to-indigo-400 bg-clip-text text-transparent">AI Specialist</span>
-              </p>
-              <p className="text-lg text-slate-300 max-w-3xl mx-auto leading-relaxed">
-                Building intelligent systems with Data Science, Machine Learning & AI. Specialized in LLMs, NLP, and production ML deployment.
-              </p>
+            {/* Scroll indicator */}
+            <div className="flex justify-center mt-16">
+              <button 
+                onClick={() => scrollToSection('about')}
+                className="animate-bounce focus:outline-none"
+              >
+                <ChevronDown className="w-8 h-8 text-emerald-400" />
+              </button>
             </div>
-
-            <div className="inline-flex items-center gap-3 px-6 py-3 bg-green-500/10 border border-green-500/30 rounded-full backdrop-blur-xl mb-12 shadow-lg shadow-green-500/20 animate-slideUp animation-delay-400">
-              <div className="relative">
-                <div className="w-2.5 h-2.5 bg-green-400 rounded-full"></div>
-                <div className="absolute inset-0 w-2.5 h-2.5 bg-green-400 rounded-full animate-ping"></div>
-              </div>
-              <span className="text-green-400 text-sm font-bold tracking-wider">OPEN TO OPPORTUNITIES</span>
-            </div>
-
-            <div className="flex flex-wrap justify-center gap-4 mb-8 animate-slideUp animation-delay-600">
-              <a 
-                href="mailto:Ayorindeolamilekan2003@gmail.com" 
-                className="w-full sm:w-auto group relative px-8 py-4 bg-gradient-to-r from-emerald-600 to-teal-600 rounded-2xl font-bold shadow-2xl shadow-emerald-500/40 hover:shadow-emerald-500/60 hover:scale-105 transition-all duration-300"
-              >
-                <div className="flex items-center justify-center gap-2">
-                  <Mail className="w-5 h-5" />
-                  Get In Touch
-                </div>
-              </a>
-              
-              <a 
-                href="https://github.com/Ayomide513" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="w-full sm:w-auto group px-8 py-4 bg-black/50 border-2 border-emerald-500/30 rounded-2xl font-bold hover:border-emerald-500/50 hover:bg-emerald-500/10 transition-all duration-300 backdrop-blur-xl hover:scale-105"
-              >
-                <div className="flex items-center justify-center gap-2">
-                  <Github className="w-5 h-5" />
-                  GitHub
-                </div>
-              </a>
-              
-              <a 
-                href="https://www.linkedin.com/in/saheedayorinde" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="w-full sm:w-auto group px-8 py-4 bg-black/50 border-2 border-emerald-500/30 rounded-2xl font-bold hover:border-emerald-500/50 hover:bg-emerald-500/10 transition-all duration-300 backdrop-blur-xl hover:scale-105"
-              >
-                <div className="flex items-center justify-center gap-2">
-                  <Linkedin className="w-5 h-5" />
-                  LinkedIn
-                </div>
-              </a>
-            </div>
-
-            <div className="flex flex-wrap justify-center gap-4 animate-slideUp animation-delay-800">
-              <a 
-                href="https://medium.com/@ayorindeolamilekan2003" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="group px-6 py-3 bg-black/50 border border-white/10 rounded-xl font-semibold hover:border-green-500/50 hover:bg-black/70 transition-all duration-300 backdrop-blur-xl hover:scale-105"
-              >
-                <div className="flex items-center gap-2">
-                  <BookOpen className="w-5 h-5 text-green-400" />
-                  <span className="text-sm">Medium</span>
-                </div>
-              </a>
-              
-              <a 
-                href="https://www.credly.com/users/ayorinde-saheed-olamilekan" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="group px-6 py-3 bg-black/50 border border-white/10 rounded-xl font-semibold hover:border-orange-500/50 hover:bg-black/70 transition-all duration-300 backdrop-blur-xl hover:scale-105"
-              >
-                <div className="flex items-center gap-2">
-                  <Award className="w-5 h-5 text-orange-400" />
-                  <span className="text-sm">Credly</span>
-                </div>
-              </a>
-            </div>
-
-            <button 
-              onClick={() => scrollToSection('expertise')}
-              className="mt-16 animate-bounce focus:outline-none"
-            >
-              <ChevronDown className="w-8 h-8 text-emerald-400" />
-            </button>
           </div>
         </section>
 
@@ -387,7 +416,6 @@ export default function AIMLPortfolio() {
 
                 <div className="pt-6 border-t border-white/10">
                   <p className="text-slate-400 text-base">
-                    📍 <span className="text-white font-semibold">Based in:</span> Ibadan, Nigeria<br/>
                     💼 <span className="text-white font-semibold">Open to:</span> Remote opportunities, Contract work, Full-time positions<br/>
                     🎯 <span className="text-white font-semibold">Interested in:</span> LLM Engineering, AI Research, ML Deployment, NLP Applications
                   </p>
@@ -753,7 +781,7 @@ export default function AIMLPortfolio() {
           <div className="max-w-7xl mx-auto">
             <div className="flex flex-col md:flex-row items-center justify-between gap-6">
               <p className="text-slate-500 text-sm font-mono text-center md:text-left">
-                © 2026 Ayorinde Saheed • Built with React & Tailwind CSS
+                © 2026 Ayorinde Saheed • Machine Learning & AI Engineer
               </p>
               <div className="flex items-center gap-4">
                 <a href="https://github.com/Ayomide513" target="_blank" rel="noopener noreferrer" className="text-slate-500 hover:text-emerald-400 transition-colors">
@@ -765,7 +793,7 @@ export default function AIMLPortfolio() {
                 <a href="https://medium.com/@ayorindeolamilekan2003" target="_blank" rel="noopener noreferrer" className="text-slate-500 hover:text-emerald-400 transition-colors">
                   <BookOpen className="w-5 h-5" />
                 </a>
-                <a href="https://www.credly.com/users/ayorinde-saheed-olamilekan" target="_blank" rel="noopener noreferrer" className="text-slate-500 hover:text-emerald-400 transition-colors">
+                <a href="https://www.credly.com/users/saheed-ayorinde" target="_blank" rel="noopener noreferrer" className="text-slate-500 hover:text-emerald-400 transition-colors">
                   <Award className="w-5 h-5" />
                 </a>
               </div>
@@ -793,30 +821,6 @@ export default function AIMLPortfolio() {
           25% { transform: translate(20px, -50px) scale(1.1); }
           50% { transform: translate(-20px, 20px) scale(0.9); }
           75% { transform: translate(50px, 50px) scale(1.05); }
-        }
-        @keyframes meshFloat {
-          0%, 100% { 
-            transform: translate(0, 0) scale(1);
-            opacity: 0.3;
-          }
-          33% { 
-            transform: translate(30px, -30px) scale(1.1);
-            opacity: 0.4;
-          }
-          66% { 
-            transform: translate(-30px, 30px) scale(0.95);
-            opacity: 0.35;
-          }
-        }
-        @keyframes particleFloat {
-          0%, 100% { 
-            transform: translate(0, 0);
-            opacity: 0.4;
-          }
-          50% { 
-            transform: translate(20px, -40px);
-            opacity: 0.6;
-          }
         }
         .animate-float {
           animation: float 20s ease-in-out infinite;
