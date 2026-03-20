@@ -219,62 +219,21 @@ export default function AIMLPortfolio() {
 
   return (
     <div className="min-h-screen bg-black text-white relative overflow-x-hidden">
-      <div className="fixed inset-0 z-0">
-        <div 
-          className="absolute inset-0 opacity-30"
-          style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%239C92AC' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-            backgroundSize: '60px 60px'
-          }}
-        />
-        
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-900/40 via-black/60 to-cyan-900/40"></div>
-        <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
-        
-        <div className="absolute inset-0 opacity-40">
-          <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-500 rounded-full mix-blend-screen filter blur-3xl animate-blob"></div>
-          <div className="absolute top-0 right-1/4 w-96 h-96 bg-cyan-500 rounded-full mix-blend-screen filter blur-3xl animate-blob animation-delay-2000"></div>
-          <div className="absolute bottom-0 left-1/3 w-96 h-96 bg-indigo-500 rounded-full mix-blend-screen filter blur-3xl animate-blob animation-delay-4000"></div>
-        </div>
-        
-        <div 
-          className="absolute inset-0 opacity-20 transition-opacity duration-300 pointer-events-none"
-          style={{
-            background: `radial-gradient(600px circle at ${mousePosition.x}px ${mousePosition.y}px, rgba(59,130,246,0.4), transparent 40%)`
-          }}
-        />
-        
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          {[...Array(30)].map((_, i) => (
-            <div
-              key={i}
-              className="absolute rounded-full"
-              style={{
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-                width: `${Math.random() * 4 + 1}px`,
-                height: `${Math.random() * 4 + 1}px`,
-                background: ['#3b82f6', '#06b6d4', '#6366f1', '#0ea5e9'][Math.floor(Math.random() * 4)],
-                animation: `float ${15 + Math.random() * 15}s ease-in-out infinite`,
-                animationDelay: `${Math.random() * 5}s`,
-                opacity: 0.3
-              }}
-            />
-          ))}
-        </div>
-      </div>
+      {/* Pure Black Background */}
+      <div className="fixed inset-0 z-0 bg-black"></div>
 
       <div className="relative z-10">
         <nav className={`hidden md:block fixed top-6 left-1/2 -translate-x-1/2 z-50 transition-all duration-500 ${scrolled ? 'scale-95' : 'scale-100'}`}>
-          <div className="bg-black/40 backdrop-blur-2xl border border-white/10 rounded-full px-8 py-4 shadow-2xl shadow-blue-500/20">
+          <div className="bg-black/60 backdrop-blur-2xl border border-emerald-500/20 rounded-full px-8 py-4 shadow-2xl shadow-emerald-500/20">
             <div className="flex items-center gap-8">
-              <button onClick={() => scrollToSection('home')} className="text-sm font-semibold text-slate-300 hover:text-blue-400 transition-colors">Home</button>
-              <button onClick={() => scrollToSection('expertise')} className="text-sm font-semibold text-slate-300 hover:text-blue-400 transition-colors">Expertise</button>
-              <button onClick={() => scrollToSection('projects')} className="text-sm font-semibold text-slate-300 hover:text-blue-400 transition-colors">Projects</button>
-              <button onClick={() => scrollToSection('content')} className="text-sm font-semibold text-slate-300 hover:text-blue-400 transition-colors">Content</button>
-              <a href="mailto:saheedolamilekanayorinde@gmail.com" className="bg-gradient-to-r from-blue-600 to-cyan-600 text-white px-6 py-2 rounded-full text-sm font-bold hover:shadow-lg hover:shadow-blue-500/50 transition-all hover:scale-105">
+              <button onClick={() => scrollToSection('home')} className="text-sm font-semibold text-slate-300 hover:text-emerald-400 transition-colors focus:outline-none">Home</button>
+              <button onClick={() => scrollToSection('about')} className="text-sm font-semibold text-slate-300 hover:text-emerald-400 transition-colors focus:outline-none">About</button>
+              <button onClick={() => scrollToSection('expertise')} className="text-sm font-semibold text-slate-300 hover:text-emerald-400 transition-colors focus:outline-none">Expertise</button>
+              <button onClick={() => scrollToSection('projects')} className="text-sm font-semibold text-slate-300 hover:text-emerald-400 transition-colors focus:outline-none">Projects</button>
+              <button onClick={() => scrollToSection('content')} className="text-sm font-semibold text-slate-300 hover:text-emerald-400 transition-colors focus:outline-none">Content</button>
+              <button onClick={() => scrollToSection('contact')} className="bg-gradient-to-r from-emerald-600 to-teal-600 text-white px-6 py-2 rounded-full text-sm font-bold hover:shadow-lg hover:shadow-emerald-500/50 transition-all hover:scale-105 focus:outline-none focus:ring-2 focus:ring-emerald-400/50">
                 Contact
-              </a>
+              </button>
             </div>
           </div>
         </nav>
@@ -282,29 +241,35 @@ export default function AIMLPortfolio() {
         <div className="md:hidden fixed top-0 left-0 right-0 z-50 bg-black/90 backdrop-blur-2xl border-b border-white/10">
           <div className="flex items-center justify-between px-6 py-4">
             <Brain className="w-8 h-8 text-cyan-400" />
-            <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} className="text-white">
+            <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} className="text-white focus:outline-none">
               {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
           </div>
           {mobileMenuOpen && (
             <div className="px-6 pb-6 space-y-4 animate-fadeIn">
-              <button onClick={() => scrollToSection('home')} className="block w-full text-left text-slate-300 hover:text-blue-400 py-2">Home</button>
-              <button onClick={() => scrollToSection('expertise')} className="block w-full text-left text-slate-300 hover:text-blue-400 py-2">Expertise</button>
-              <button onClick={() => scrollToSection('projects')} className="block w-full text-left text-slate-300 hover:text-blue-400 py-2">Projects</button>
-              <button onClick={() => scrollToSection('content')} className="block w-full text-left text-slate-300 hover:text-blue-400 py-2">Content</button>
-              <a href="mailto:ayorindeolamilekan2003@gmail.com" className="block w-full text-center bg-gradient-to-r from-blue-600 to-cyan-600 text-white px-6 py-3 rounded-xl font-bold">
+              <button onClick={() => scrollToSection('home')} className="block w-full text-left text-slate-300 hover:text-blue-400 py-2 focus:outline-none">Home</button>
+              <button onClick={() => scrollToSection('about')} className="block w-full text-left text-slate-300 hover:text-blue-400 py-2 focus:outline-none">About</button>
+              <button onClick={() => scrollToSection('expertise')} className="block w-full text-left text-slate-300 hover:text-blue-400 py-2 focus:outline-none">Expertise</button>
+              <button onClick={() => scrollToSection('projects')} className="block w-full text-left text-slate-300 hover:text-blue-400 py-2 focus:outline-none">Projects</button>
+              <button onClick={() => scrollToSection('content')} className="block w-full text-left text-slate-300 hover:text-blue-400 py-2 focus:outline-none">Content</button>
+              <button onClick={() => scrollToSection('contact')} className="block w-full text-center bg-gradient-to-r from-emerald-600 to-teal-600 text-white px-6 py-3 rounded-xl font-bold focus:outline-none focus:ring-2 focus:ring-emerald-400/50">
                 Contact
-              </a>
+              </button>
             </div>
           )}
         </div>
 
         <section id="home" className="min-h-screen flex items-center justify-center px-6 pt-32 pb-20">
           <div className="max-w-6xl mx-auto text-center">
+            {/* Profile Picture with Glow Effect */}
             <div className="mb-8 relative inline-block animate-fadeIn">
               <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-cyan-600 rounded-full blur-3xl opacity-60 animate-pulse"></div>
-              <div className="relative bg-gradient-to-br from-blue-500 via-cyan-500 to-teal-500 p-8 rounded-3xl shadow-2xl shadow-blue-500/50">
-                <Brain className="w-20 h-20 text-white" strokeWidth={1.5} />
+              <div className="relative w-40 h-40 mx-auto rounded-full overflow-hidden border-4 border-cyan-400/30 shadow-2xl">
+                <img 
+                  src="/profile-photo.jpeg"
+                  alt="Ayorinde Saheed Olamilekan" 
+                  className="w-full h-full object-cover"
+                />
               </div>
             </div>
 
@@ -335,10 +300,10 @@ export default function AIMLPortfolio() {
 
             <div className="flex flex-wrap justify-center gap-4 mb-8 animate-slideUp animation-delay-600">
               <a 
-                href="mailto:saheedolamilekanayorinde@gmail.com" 
-                className="group relative px-8 py-4 bg-gradient-to-r from-blue-600 to-cyan-600 rounded-2xl font-bold shadow-2xl shadow-blue-500/40 hover:shadow-blue-500/60 hover:scale-105 transition-all duration-300"
+                href="mailto:Ayorindeolamilekan2003@gmail.com" 
+                className="w-full sm:w-auto group relative px-8 py-4 bg-gradient-to-r from-emerald-600 to-teal-600 rounded-2xl font-bold shadow-2xl shadow-emerald-500/40 hover:shadow-emerald-500/60 hover:scale-105 transition-all duration-300"
               >
-                <div className="flex items-center gap-2">
+                <div className="flex items-center justify-center gap-2">
                   <Mail className="w-5 h-5" />
                   Get In Touch
                 </div>
@@ -348,9 +313,9 @@ export default function AIMLPortfolio() {
                 href="https://github.com/Ayomide513" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="group px-8 py-4 bg-black/50 border-2 border-white/10 rounded-2xl font-bold hover:border-blue-500/50 hover:bg-black/70 transition-all duration-300 backdrop-blur-xl hover:scale-105"
+                className="w-full sm:w-auto group px-8 py-4 bg-black/50 border-2 border-emerald-500/30 rounded-2xl font-bold hover:border-emerald-500/50 hover:bg-emerald-500/10 transition-all duration-300 backdrop-blur-xl hover:scale-105"
               >
-                <div className="flex items-center gap-2">
+                <div className="flex items-center justify-center gap-2">
                   <Github className="w-5 h-5" />
                   GitHub
                 </div>
@@ -360,9 +325,9 @@ export default function AIMLPortfolio() {
                 href="https://www.linkedin.com/in/saheedayorinde" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="group px-8 py-4 bg-black/50 border-2 border-white/10 rounded-2xl font-bold hover:border-blue-500/50 hover:bg-black/70 transition-all duration-300 backdrop-blur-xl hover:scale-105"
+                className="w-full sm:w-auto group px-8 py-4 bg-black/50 border-2 border-emerald-500/30 rounded-2xl font-bold hover:border-emerald-500/50 hover:bg-emerald-500/10 transition-all duration-300 backdrop-blur-xl hover:scale-105"
               >
-                <div className="flex items-center gap-2">
+                <div className="flex items-center justify-center gap-2">
                   <Linkedin className="w-5 h-5" />
                   LinkedIn
                 </div>
@@ -383,7 +348,7 @@ export default function AIMLPortfolio() {
               </a>
               
               <a 
-                href="https://www.credly.com/users/saheed-ayorinde" 
+                href="https://www.credly.com/users/ayorinde-saheed-olamilekan" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="group px-6 py-3 bg-black/50 border border-white/10 rounded-xl font-semibold hover:border-orange-500/50 hover:bg-black/70 transition-all duration-300 backdrop-blur-xl hover:scale-105"
@@ -397,17 +362,51 @@ export default function AIMLPortfolio() {
 
             <button 
               onClick={() => scrollToSection('expertise')}
-              className="mt-16 animate-bounce"
+              className="mt-16 animate-bounce focus:outline-none"
             >
-              <ChevronDown className="w-8 h-8 text-blue-400" />
+              <ChevronDown className="w-8 h-8 text-emerald-400" />
             </button>
           </div>
         </section>
 
-        <section id="expertise" className="py-32 px-6">
+        <section id="about" className="py-20 px-6">
+          <div className="max-w-4xl mx-auto">
+            <div className={`text-center mb-12 transition-all duration-1000 ${visibleSections.about ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+              <h2 className="text-5xl md:text-6xl font-black mb-6 bg-gradient-to-r from-purple-400 via-pink-400 to-rose-400 bg-clip-text text-transparent">
+                About Me
+              </h2>
+            </div>
+
+            <div className={`bg-black/40 backdrop-blur-2xl rounded-3xl p-10 border border-white/10 transition-all duration-1000 ${visibleSections.about ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+              <div className="space-y-6 text-slate-300 leading-relaxed text-lg">
+                <p>
+                  Hi! I'm <span className="text-white font-bold">Ayorinde Saheed Olamilekan</span>, an AI/ML Engineer passionate about building intelligent systems that solve real-world problems. I specialize in <span className="text-cyan-400 font-semibold">Large Language Models</span>, <span className="text-blue-400 font-semibold">Natural Language Processing</span>, and <span className="text-purple-400 font-semibold">Machine Learning</span>.
+                </p>
+                
+                <p>
+                  With expertise in both classical ML algorithms and cutting-edge LLM technologies, I've successfully deployed production systems ranging from healthcare chatbots to predictive analytics platforms. I'm particularly interested in leveraging AI to improve healthcare, education, and business operations.
+                </p>
+
+                <p>
+                  Currently, I'm focused on advancing my skills in prompt engineering, RAG systems, and fine-tuning LLMs for domain-specific applications. I'm actively seeking opportunities to work on impactful AI/ML projects where I can contribute to innovative solutions.
+                </p>
+
+                <div className="pt-6 border-t border-white/10">
+                  <p className="text-slate-400 text-base">
+                    📍 <span className="text-white font-semibold">Based in:</span> Ibadan, Nigeria<br/>
+                    💼 <span className="text-white font-semibold">Open to:</span> Remote opportunities, Contract work, Full-time positions<br/>
+                    🎯 <span className="text-white font-semibold">Interested in:</span> LLM Engineering, AI Research, ML Deployment, NLP Applications
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="expertise" className="py-20 px-6">
           <div className="max-w-7xl mx-auto">
             <div className={`text-center mb-20 transition-all duration-1000 ${visibleSections.expertise ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-              <h2 className="text-5xl md:text-6xl font-black mb-6 bg-gradient-to-r from-blue-400 via-cyan-400 to-teal-400 bg-clip-text text-transparent">
+              <h2 className="text-5xl md:text-6xl font-black mb-6 bg-gradient-to-r from-emerald-400 via-teal-400 to-cyan-400 bg-clip-text text-transparent">
                 Core Expertise
               </h2>
               <p className="text-xl text-slate-300">Advanced capabilities in AI & ML engineering</p>
@@ -419,7 +418,7 @@ export default function AIMLPortfolio() {
                 return (
                   <div
                     key={item.title}
-                    className={`group relative bg-black/40 backdrop-blur-2xl rounded-3xl p-8 border border-white/10 hover:border-blue-500/50 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/30 ${visibleSections.expertise ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+                    className={`group relative bg-black/40 backdrop-blur-2xl rounded-3xl p-8 border border-emerald-500/20 hover:border-emerald-500/50 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-emerald-500/30 ${visibleSections.expertise ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
                     style={{ transitionDelay: `${idx * 100}ms` }}
                   >
                     <div className={`absolute inset-0 bg-gradient-to-br ${item.gradient} opacity-0 group-hover:opacity-10 rounded-3xl transition-opacity duration-500`}></div>
@@ -465,10 +464,10 @@ export default function AIMLPortfolio() {
           </div>
         </section>
 
-        <section id="projects" className="py-32 px-6">
+        <section id="projects" className="py-20 px-6">
           <div className="max-w-7xl mx-auto">
             <div className={`text-center mb-20 transition-all duration-1000 ${visibleSections.projects ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-              <h2 className="text-5xl md:text-6xl font-black mb-6 bg-gradient-to-r from-cyan-400 via-blue-400 to-indigo-400 bg-clip-text text-transparent">
+              <h2 className="text-5xl md:text-6xl font-black mb-6 bg-gradient-to-r from-teal-400 via-emerald-400 to-green-400 bg-clip-text text-transparent">
                 Featured Projects
               </h2>
               <p className="text-xl text-slate-300">Production ML solutions with real-world impact</p>
@@ -484,7 +483,7 @@ export default function AIMLPortfolio() {
                   <div
                     key={project.id}
                     onClick={() => setActiveProject(isActive ? null : project.id)}
-                    className={`group relative bg-black/40 backdrop-blur-2xl rounded-3xl p-8 border border-white/10 hover:border-white/20 transition-all duration-500 cursor-pointer hover:shadow-2xl hover:shadow-blue-500/20 hover:scale-[1.02] ${visibleSections.projects ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+                    className={`group relative bg-black/40 backdrop-blur-2xl rounded-3xl p-8 border border-emerald-500/20 hover:border-emerald-500/40 transition-all duration-500 cursor-pointer hover:shadow-2xl hover:shadow-emerald-500/20 hover:scale-[1.02] ${visibleSections.projects ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
                     style={{ transitionDelay: `${idx * 100}ms` }}
                   >
                     <div className="flex items-start justify-between mb-6">
@@ -562,7 +561,7 @@ export default function AIMLPortfolio() {
           </div>
         </section>
 
-        <section id="content" className="py-32 px-6">
+        <section id="content" className="py-20 px-6">
           <div className="max-w-7xl mx-auto">
             <div className={`text-center mb-20 transition-all duration-1000 ${visibleSections.content ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
               <h2 className="text-5xl md:text-6xl font-black mb-6 bg-gradient-to-r from-teal-400 via-emerald-400 to-green-400 bg-clip-text text-transparent">
@@ -600,7 +599,7 @@ export default function AIMLPortfolio() {
               </a>
 
               <a
-                href="https://www.credly.com/users/saheed-ayorinde"
+                href="https://www.credly.com/users/ayorinde-saheed-olamilekan"
                 target="_blank"
                 rel="noopener noreferrer"
                 className={`group relative bg-black/40 backdrop-blur-2xl rounded-3xl p-10 border border-white/10 hover:border-orange-500/50 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-orange-500/30 ${visibleSections.content ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
@@ -630,31 +629,31 @@ export default function AIMLPortfolio() {
           </div>
         </section>
 
-        <section className="py-32 px-6">
+        <section className="py-20 px-6">
           <div className="max-w-5xl mx-auto">
             <div className="relative bg-black/40 backdrop-blur-2xl rounded-3xl p-12 border border-white/10 overflow-hidden shadow-2xl shadow-blue-500/20">
               <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 via-cyan-500/5 to-teal-500/5"></div>
               
               <div className="relative">
-                <h2 className="text-4xl font-black text-center mb-16 bg-gradient-to-r from-blue-400 via-cyan-400 to-teal-400 bg-clip-text text-transparent">
+                <h2 className="text-4xl font-black text-center mb-16 bg-gradient-to-r from-emerald-400 via-teal-400 to-cyan-400 bg-clip-text text-transparent">
                   Impact Metrics
                 </h2>
                 
                 <div className="grid grid-cols-3 gap-8">
                   <div className="text-center group">
-                    <div className="text-5xl md:text-6xl font-black bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent mb-3 group-hover:scale-110 transition-transform">
+                    <div className="text-5xl md:text-6xl font-black bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent mb-3 group-hover:scale-110 transition-transform">
                       8+
                     </div>
                     <div className="text-slate-400 font-medium text-sm md:text-base">ML Projects</div>
                   </div>
                   <div className="text-center group">
-                    <div className="text-5xl md:text-6xl font-black bg-gradient-to-r from-blue-400 to-indigo-400 bg-clip-text text-transparent mb-3 group-hover:scale-110 transition-transform">
+                    <div className="text-5xl md:text-6xl font-black bg-gradient-to-r from-teal-400 to-cyan-400 bg-clip-text text-transparent mb-3 group-hover:scale-110 transition-transform">
                       90%
                     </div>
                     <div className="text-slate-400 font-medium text-sm md:text-base">Model Recall</div>
                   </div>
                   <div className="text-center group">
-                    <div className="text-5xl md:text-6xl font-black bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent mb-3 group-hover:scale-110 transition-transform">
+                    <div className="text-5xl md:text-6xl font-black bg-gradient-to-r from-cyan-400 to-emerald-400 bg-clip-text text-transparent mb-3 group-hover:scale-110 transition-transform">
                       15K+
                     </div>
                     <div className="text-slate-400 font-medium text-sm md:text-base">Data Points</div>
@@ -665,23 +664,114 @@ export default function AIMLPortfolio() {
           </div>
         </section>
 
+        <section id="contact" className="py-20 px-6">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-5xl md:text-6xl font-black mb-6 bg-gradient-to-r from-emerald-400 via-teal-400 to-cyan-400 bg-clip-text text-transparent">
+                Get In Touch
+              </h2>
+              <p className="text-xl text-slate-300">Let's discuss how I can help with your AI/ML projects</p>
+            </div>
+
+            <div className="bg-black/40 backdrop-blur-2xl rounded-3xl p-10 border border-white/10">
+              <form 
+                action="https://formspree.io/f/xnjgrnny" 
+                method="POST"
+                className="space-y-6"
+              >
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div>
+                    <label htmlFor="name" className="block text-sm font-semibold text-slate-300 mb-2">
+                      Your Name *
+                    </label>
+                    <input
+                      type="text"
+                      id="name"
+                      name="name"
+                      required
+                      className="w-full px-4 py-3 bg-black/50 border border-emerald-500/20 rounded-xl text-white placeholder-slate-500 focus:border-emerald-400 focus:outline-none focus:ring-2 focus:ring-emerald-400/20 transition-all"
+                      placeholder="John Doe"
+                    />
+                  </div>
+
+                  <div>
+                    <label htmlFor="email" className="block text-sm font-semibold text-slate-300 mb-2">
+                      Your Email *
+                    </label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      required
+                      className="w-full px-4 py-3 bg-black/50 border border-emerald-500/20 rounded-xl text-white placeholder-slate-500 focus:border-emerald-400 focus:outline-none focus:ring-2 focus:ring-emerald-400/20 transition-all"
+                      placeholder="john@example.com"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label htmlFor="subject" className="block text-sm font-semibold text-slate-300 mb-2">
+                    Subject
+                  </label>
+                  <input
+                    type="text"
+                    id="subject"
+                    name="subject"
+                    className="w-full px-4 py-3 bg-black/50 border border-emerald-500/20 rounded-xl text-white placeholder-slate-500 focus:border-emerald-400 focus:outline-none focus:ring-2 focus:ring-emerald-400/20 transition-all"
+                    placeholder="Project Collaboration Opportunity"
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor="message" className="block text-sm font-semibold text-slate-300 mb-2">
+                    Message *
+                  </label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    required
+                    rows="6"
+                    className="w-full px-4 py-3 bg-black/50 border border-emerald-500/20 rounded-xl text-white placeholder-slate-500 focus:border-emerald-400 focus:outline-none focus:ring-2 focus:ring-emerald-400/20 transition-all resize-none"
+                    placeholder="Tell me about your project or opportunity..."
+                  ></textarea>
+                </div>
+
+                <button
+                  type="submit"
+                  className="w-full px-8 py-4 bg-gradient-to-r from-emerald-600 to-teal-600 rounded-2xl font-bold text-white shadow-2xl shadow-emerald-500/40 hover:shadow-emerald-500/60 hover:scale-[1.02] transition-all duration-300 flex items-center justify-center gap-2 focus:outline-none focus:ring-2 focus:ring-emerald-400/50"
+                >
+                  <Mail className="w-5 h-5" />
+                  Send Message
+                </button>
+
+                <p className="text-center text-slate-500 text-sm">
+                  Or email me directly at{' '}
+                  <a href="mailto:Ayorindeolamilekan2003@gmail.com" className="text-emerald-400 hover:text-emerald-300 transition-colors">
+                    Ayorindeolamilekan2003@gmail.com
+                  </a>
+                </p>
+              </form>
+            </div>
+          </div>
+        </section>
+
         <footer className="py-12 px-6 border-t border-white/10">
           <div className="max-w-7xl mx-auto">
             <div className="flex flex-col md:flex-row items-center justify-between gap-6">
               <p className="text-slate-500 text-sm font-mono text-center md:text-left">
-                © 2025 Ayorinde Saheed • Built with React & Tailwind CSS
+                © 2026 Ayorinde Saheed • Built with React & Tailwind CSS
               </p>
               <div className="flex items-center gap-4">
-                <a href="https://github.com/Ayomide513" target="_blank" rel="noopener noreferrer" className="text-slate-500 hover:text-blue-400 transition-colors">
+                <a href="https://github.com/Ayomide513" target="_blank" rel="noopener noreferrer" className="text-slate-500 hover:text-emerald-400 transition-colors">
                   <Github className="w-5 h-5" />
                 </a>
-                <a href="https://www.linkedin.com/in/saheedayorinde" target="_blank" rel="noopener noreferrer" className="text-slate-500 hover:text-blue-400 transition-colors">
+                <a href="https://www.linkedin.com/in/saheedayorinde" target="_blank" rel="noopener noreferrer" className="text-slate-500 hover:text-emerald-400 transition-colors">
                   <Linkedin className="w-5 h-5" />
                 </a>
-                <a href="https://medium.com/@ayorindeolamilekan2003" target="_blank" rel="noopener noreferrer" className="text-slate-500 hover:text-blue-400 transition-colors">
+                <a href="https://medium.com/@ayorindeolamilekan2003" target="_blank" rel="noopener noreferrer" className="text-slate-500 hover:text-emerald-400 transition-colors">
                   <BookOpen className="w-5 h-5" />
                 </a>
-                <a href="https://www.credly.com/users/saheed-ayorinde" target="_blank" rel="noopener noreferrer" className="text-slate-500 hover:text-blue-400 transition-colors">
+                <a href="https://www.credly.com/users/ayorinde-saheed-olamilekan" target="_blank" rel="noopener noreferrer" className="text-slate-500 hover:text-emerald-400 transition-colors">
                   <Award className="w-5 h-5" />
                 </a>
               </div>
@@ -709,6 +799,30 @@ export default function AIMLPortfolio() {
           25% { transform: translate(20px, -50px) scale(1.1); }
           50% { transform: translate(-20px, 20px) scale(0.9); }
           75% { transform: translate(50px, 50px) scale(1.05); }
+        }
+        @keyframes meshFloat {
+          0%, 100% { 
+            transform: translate(0, 0) scale(1);
+            opacity: 0.3;
+          }
+          33% { 
+            transform: translate(30px, -30px) scale(1.1);
+            opacity: 0.4;
+          }
+          66% { 
+            transform: translate(-30px, 30px) scale(0.95);
+            opacity: 0.35;
+          }
+        }
+        @keyframes particleFloat {
+          0%, 100% { 
+            transform: translate(0, 0);
+            opacity: 0.4;
+          }
+          50% { 
+            transform: translate(20px, -40px);
+            opacity: 0.6;
+          }
         }
         .animate-float {
           animation: float 20s ease-in-out infinite;
