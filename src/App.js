@@ -593,7 +593,7 @@ export default function AIMLPortfolio() {
               </a>
 
               <a
-                href="https://www.credly.com/users/ayorinde-saheed-olamilekan"
+                href="https://www.credly.com/users/saheed-ayorinde"
                 target="_blank"
                 rel="noopener noreferrer"
                 className={`group relative bg-black/40 backdrop-blur-2xl rounded-3xl p-10 border border-white/10 hover:border-orange-500/50 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-orange-500/30 ${visibleSections.content ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
