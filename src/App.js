@@ -3,22 +3,16 @@ import { Brain, Github, Linkedin, Mail, ExternalLink, Code, Database, Cpu, Zap, 
 
 export default function AIMLPortfolio() {
   const [activeProject, setActiveProject] = useState(null);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [visibleSections, setVisibleSections] = useState({});
 
   useEffect(() => {
-    const handleMouseMove = (e) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
-    };
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
     };
-    window.addEventListener('mousemove', handleMouseMove);
     window.addEventListener('scroll', handleScroll);
     return () => {
-     window.removeEventListener('mousemove', handleMouseMove);
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
